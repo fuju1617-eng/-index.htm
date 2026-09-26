@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Hug For You ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(circle at center,
+        #42152f 0%,
+        #1b0b19 45%,
+        #050505 100%);
+
+    font-family: Georgia, serif;
+    color: white;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    padding: 25px;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+}
+
+/* FIRST SCREEN */
+
+#start {
+    animation: fadeIn 1.5s ease;
+}
+
+.small {
+    color: #ff9bcf;
+    font-size: 14px;
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+}
+
+h1 {
+    font-size: 34px;
+    margin: 10px 0 15px;
+
+    color: white;
+
+    text-shadow:
+        0 0 10px #ff4fa3,
+        0 0 25px #ff4fa3;
+}
+
+.subtitle {
+    color: #e9bfd6;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 35px;
+}
+
+button {
+    border: 1px solid #ff78b9;
+
+    background:
+        linear-gradient(145deg,
+        #ff5aaa,
+        #b51c69);
+
+    color: white;
+
+    padding: 17px 30px;
+
+    border-radius: 50px;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 15px rgba(255,79,163,.5),
+        0 0 35px rgba(255,79,163,.2);
+
+    transition: .3s;
+}
+
+button:hover {
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 25px rgba(255,79,163,.8),
+        0 0 50px rgba(255,79,163,.4);
+}
+
+button:active {
+    transform: scale(.95);
+}
+
+
+/* HUG SCREEN */
+
+#hug {
+    display: none;
+    animation: appear 1.2s ease forwards;
+}
+
+.hug-title {
+    margin-top: 20px;
+    font-size: 32px;
+}
+
+
+/* TWO PEOPLE */
+
+.hug-scene {
+    position: relative;
+
+    width: 260px;
+    height: 210px;
+
+    margin: 0 auto 10px;
+
+    animation: hugBounce 2s infinite ease-in-out;
+}
+
+
+/* PERSON */
+
+.person {
+    position: absolute;
+
+    width: 90px;
+    height: 160px;
+
+    top: 25px;
+}
+
+
+/* LEFT PERSON */
+
+.person.left {
+    left: 35px;
+}
+
+
+/* RIGHT PERSON */
+
+.person.right {
+    right: 35px;
+}
+
+
+/* HEAD */
+
+.head {
+    position: absolute;
+
+    width: 55px;
+    height: 55px;
+
+    top: 0;
+
+    border-radius: 50%;
+
+    background: #ffc0dc;
+
+    box-shadow:
+        0 0 15px rgba(255,110,180,.5);
+}
+
+
+/* HAIR */
+
+.hair {
+    position: absolute;
+
+    width: 62px;
+    height: 45px;
+
+    top: -5px;
+    left: -4px;
+
+    border-radius: 50% 50% 20% 20%;
+
+    background: #120912;
+}
+
+
+/* BODY */
+
+.body {
+    position: absolute;
+
+    width: 70px;
+    height: 85px;
+
+    top: 52px;
+    left: -7px;
+
+    border-radius: 35px 35px 20px 20px;
+
+    background: #ff4fa3;
+
+    box-shadow:
+        0 0 15px rgba(255,79,163,.4);
+}
+
+
+/* RIGHT PERSON BODY */
+
+.person.right .body {
+    background: #161016;
+    border: 2px solid #ff73b5;
+}
+
+
+/* ARMS */
+
+.arm {
+    position: absolute;
+
+    width: 22px;
+    height: 85px;
+
+    top: 55px;
+
+    border-radius: 20px;
+
+    background: #ffc0dc;
+
+    z-index: 5;
+}
+
+
+/* LEFT PERSON'S HUGGING ARM */
+
+.person.left .arm {
+    right: -5px;
+
+    transform:
+        rotate(-55deg);
+
+    transform-origin: top center;
+
+    animation: leftArm 1.5s infinite alternate ease-in-out;
+}
+
+
+/* RIGHT PERSON'S HUGGING ARM */
+
+.person.right .arm {
+    left: -5px;
+
+    transform:
+        rotate(55deg);
+
+    transform-origin: top center;
+
+    animation: rightArm 1.5s infinite alternate ease-in-out;
+}
+
+
+/* HEART BETWEEN THEM */
+
+.big-heart {
+    position: absolute;
+
+    left: 50%;
+    top: 80px;
+
+    transform: translateX(-50%);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 42px;
+
+    color: #ff4fa3;
+
+    text-shadow:
+        0 0 10px #ff4fa3,
+        0 0 25px #ff4fa3;
+
+    animation: heartbeat 1s infinite;
+
+    z-index: 10;
+}
+
+
+/* MESSAGE */
+
+.message {
+    max-width: 350px;
+
+    margin: 10px auto 0;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    color: #ffe3ef;
+
+    animation: fadeIn 2s ease;
+}
+
+.signature {
+    margin-top: 20px;
+
+    color: #ff9
