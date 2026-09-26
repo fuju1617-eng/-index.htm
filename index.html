@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Hug For You 🫂</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background:
+            radial-gradient(circle at 50% 35%, #3b172f 0%, #160b16 45%, #050505 100%);
+        font-family: Georgia, serif;
+        color: white;
+    }
+
+    .container {
+        text-align: center;
+        padding: 30px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .small {
+        color: #ff9fcf;
+        font-size: 15px;
+        letter-spacing: 2px;
+        margin-bottom: 12px;
+    }
+
+    h1 {
+        font-size: 34px;
+        margin: 5px 0 12px;
+        color: #fff;
+        text-shadow: 0 0 20px #ff4fa3;
+    }
+
+    p {
+        color: #e8c8d9;
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+
+    button {
+        border: 1px solid #ff72b7;
+        background: linear-gradient(145deg, #ff4fa3, #b71967);
+        color: white;
+        padding: 17px 30px;
+        border-radius: 50px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 0 25px rgba(255, 79, 163, .5);
+        transition: .3s;
+    }
+
+    button:hover {
+        transform: scale(1.08);
+        box-shadow: 0 0 40px rgba(255, 79, 163, .8);
+    }
+
+    .hug {
+        display: none;
+        animation: appear 1s ease forwards;
+    }
+
+    .hug-emoji {
+        font-size: 80px;
+        animation: hug 1.4s infinite alternate ease-in-out;
+        filter: drop-shadow(0 0 20px #ff4fa3);
+    }
+
+    .message {
+        margin-top: 20px;
+        max-width: 340px;
+        line-height: 1.7;
+        font-size: 18px;
+        color: #fff;
+    }
+
+    .signature {
+        margin-top: 18px;
+        color: #ff9fcf;
+        font-style: italic;
+    }
+
+    .heart {
+        position: fixed;
+        bottom: -30px;
+        font-size: 22px;
+        pointer-events: none;
+        animation: float 5s linear forwards;
+        z-index: 1;
+    }
+
+    @keyframes float {
+        0% {
+            transform: translateY(0) scale(.7) rotate(0deg);
+            opacity: 0;
+        }
+        15% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-110vh) scale(1.4) rotate(25deg);
+            opacity: 0;
+        }
+    }
+
+    @keyframes hug {
+        from {
+            transform: scale(1);
+        }
+        to {
+            transform: scale(1.12);
+        }
+    }
+
+    @keyframes appear {
+        from {
+            opacity: 0;
+            transform: translateY(25px) scale(.9);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div id="start">
+        <div class="small">A LITTLE SOMETHING FOR YOU ♡</div>
+
+        <h1>Open Your Hug 🫂</h1>
+
+        <p>
+            Distance can't stop me from hugging you.
+        </p>
+
+        <button onclick="openHug()">
+            Open Your Hug 🫂
+        </button>
+    </div>
+
+    <div class="hug" id="hug">
+
+        <div class="hug-emoji">🫂</div>
+
+        <h1>Come Here, Husband. 🥺</h1>
+
+        <div class="message">
+            If I were there right now,
+            I wouldn't say anything...
+
+            I'd just hold you tightly
+            and stay until everything
+            feels a little lighter. ❤️
+
+            <br><br>
+
+            You're loved.
+            You're not alone.
+            And you've always got me. 🫂
+        </div>
+
+        <div class="signature">
+            — Your wife, who misses you terribly 💗
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function openHug() {
+
+    document.getElementById("start").style.display = "none";
+    document.getElementById("hug").style.display = "block";
+
+    // Create floating hearts
+    for (let i = 0; i < 35; i++) {
+
+        setTimeout(() => {
+
+            const heart = document.createElement("div");
+
+            heart.className = "heart";
+
+            const hearts = ["❤️", "🩷", "💗", "💖", "💕", "🖤"];
+
+            heart.innerHTML =
+                hearts[Math.floor(Math.random() * hearts.length)];
+
+            heart.style.left =
+                Math.random() * 100 + "vw";
+
+            heart.style.animationDuration =
+                (3 + Math.random() * 4) + "s";
+
+            heart.style.fontSize =
+                (15 + Math.random() * 25) + "px";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 7000);
+
+        }, i * 100);
+
+    }
+}
+
+</script>
+
+</body>
+</html>
